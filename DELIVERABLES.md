@@ -167,3 +167,33 @@ To ensure a collaborative "real-time" experience without the complexity of full 
 *   **Static Assets**: All JS/CSS/Images are served via CDN (Vercel Edge Network).
 *   **Code Splitting**: Next.js automatically splits code by route, ensuring the initial load is minimal.
 *   **Memoization**: Heavy UI components (like complex Kanban cards) are memoized to prevent unnecessary re-renders during high-frequency updates (e.g., dragging).
+
+---
+
+## 7. Assumptions and Trade-offs
+
+### Assumptions
+*   **Authentication**: We assume users will sign up via Clerk. The `owner_id` in the database is directly linked to Clerk's User ID.
+*   **Single Tenant**: The current architecture assumes a single deployment instance. Multi-tenancy (team-based subdomains) would require schema changes.
+*   **Device Support**: The UI is optimized for desktop and tablet usage (drag-and-drop), though responsive for mobile.
+
+### Trade-offs
+*   **Polling vs. WebSockets**:
+    *   *Decision*: We used a "Hybrid Optimistic UI + Polling" strategy instead of full WebSockets for the MVP.
+    *   *Pro*: Significantly lower complexity, easier to debug, works effortlessly in serverless (no persistent connections), lower cost.
+    *   *Con*: Updates from *other* users might have a slight delay (1-2s) compared to millisecond-latency WebSockets.
+*   **Client-Side Ordering**:
+    *   *Decision*: Drag-and-drop ordering is calculated on the client and sent to the API.
+    *   *Pro*: Instant feedback for the user.
+    *   *Con*: Rare edge cases where two users reorder the same list simultaneously might require a refresh to sync.
+
+---
+
+## 8. Demo Access
+
+The application is deployed and ready to use.
+
+*   **Live URL**: [https://rtc-pi.vercel.app](https://rtc-pi.vercel.app)
+*   **Test Credentials**: You can sign up with any email or Google account.
+*   **GitHub Repository**: [https://github.com/uvenkatateja/RTC](https://github.com/uvenkatateja/RTC)
+

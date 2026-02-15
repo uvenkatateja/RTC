@@ -12,7 +12,7 @@ A modern, full-stack task management application built with Next.js, Drizzle ORM
 -   **Boards & Lists**: Create unlimited boards and organize tasks into lists.
 -   **Task Management**: Create, update, delete, and organize tasks.
 -   **Drag & Drop**: Smooth drag-and-drop interface for tasks and lists (`@dnd-kit`).
--   **Real-time Collaboration**: Instant updates across all connected clients (tasks move live!).
+-   **Real-time Collaboration**: Instant updates across all connected clients via optimistic UI and smart polling.
 -   **Members**: Invite team members to boards via email.
 -   **Activity Log**: detailed history of all actions on the board.
 -   **Search & Filtering**: Powerful search and filtering capabilities.
@@ -36,7 +36,6 @@ A modern, full-stack task management application built with Next.js, Drizzle ORM
 -   **Database**: PostgreSQL (via [Neon Serverless](https://neon.tech/))
 -   **ORM**: [Drizzle ORM](https://orm.drizzle.team/)
 -   **Auth**: [Clerk](https://clerk.com/)
--   **Real-time**: [Ably](https://ably.com/) (WebSockets)
 
 ## 🏗️ Architecture
 
@@ -51,10 +50,10 @@ The database is normalized and built on PostgreSQL. Key tables:
 -   **ActivityLogs**: `id`, `board_id`, `user_id`, `action_type`, `entity_type`, `metadata`
 
 ### Real-time Strategy
-We use **Ably** for reliable Pub/Sub messaging.
-1.  **Events**: When a user performs an action (e.g., moves a task), the API updates the database *and* publishes a message to the board's Ably channel.
-2.  **Clients**: All clients connected to that board subscribe to the channel.
-3.  **Sync**: Upon receiving a message (e.g., `task_moved`), the client creates an optimistic update or invalidates the React Query cache to re-fetch latest data instantly.
+We use a **Hybrid Optimistic UI + Polling** strategy for reliable updates in a serverless environment.
+1.  **Optimistic Updates**: When a user performs an action (e.g., moves a task), the UI updates *instantly* via React Query's `onMutate` handler, providing a snappy, native-app feel.
+2.  **Smart Polling**: The client periodically re-fetches data (e.g., every few seconds) and invalidates queries on window focus to ensure all users see the latest state without the complexity of managing persistent WebSocket connections.
+3.  **Conflict Resolution**: Last-write-wins for field updates, creating a seamless collaborative experience.
 
 ## 🚀 Getting Started
 
@@ -63,7 +62,6 @@ We use **Ably** for reliable Pub/Sub messaging.
 -   pnpm (recommended) or npm
 -   PostgreSQL database (Neon recommended)
 -   Clerk account
--   Ably account
 
 ### Installation
 
