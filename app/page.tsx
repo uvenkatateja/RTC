@@ -1,5 +1,7 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Table } from "@/components/table"
+import { Card } from "@/components/ui/card"
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { HeroHeader } from "@/components/header"
@@ -114,47 +116,57 @@ export default function HeroSection() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="border-t bg-muted/30 py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tight mb-4">
-                Everything you need to stay organized
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Powerful features designed to help your team work faster and more efficiently.
-              </p>
+        <section id="features" className="border-t bg-muted/30 py-24">
+          <div className="mx-auto w-full max-w-5xl px-6">
+            <div>
+              <h2 className="text-foreground text-4xl font-semibold">Effortless Task Management</h2>
+              <p className="text-muted-foreground mb-12 mt-4 text-balance text-lg">Automate your tasks and workflows by connecting your favorite tools like Notion, Todoist, and more. AI-powered scheduling helps you stay on track and adapt to changing priorities.</p>
+              <div className="bg-foreground/5 rounded-3xl p-6 border border-border/50">
+                <Table />
+              </div>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-3">
-              <div className="flex flex-col items-center text-center p-6 bg-background rounded-xl border border-border/50 shadow-sm">
-                <div className="mb-4 rounded-full bg-primary/10 p-4">
-                  <Zap className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold">Real-Time Sync</h3>
-                <p className="text-muted-foreground">
-                  See updates instantly as your team makes changes. No refresh
-                  needed.
-                </p>
+            <div className="border-foreground/10 relative mt-16 grid gap-12 border-b pb-12 [--radius:1rem] md:grid-cols-2">
+              <div>
+                <h3 className="text-foreground text-xl font-semibold">Marketing Campaigns</h3>
+                <p className="text-muted-foreground my-4 text-lg">Effortlessly plan and execute your marketing campaigns organized.</p>
+                <Card className="aspect-video overflow-hidden px-6 pt-6 bg-muted/50 border-none shadow-none">
+                  <div className="h-full w-full bg-background rounded-t-xl border border-border shadow-sm p-4 translate-y-2">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-8 h-8 rounded-full bg-primary/20"></div>
+                      <div className="h-4 w-24 bg-muted rounded"></div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="h-2 w-full bg-muted rounded"></div>
+                      <div className="h-2 w-3/4 bg-muted rounded"></div>
+                    </div>
+                  </div>
+                </Card>
               </div>
-              <div className="flex flex-col items-center text-center p-6 bg-background rounded-xl border border-border/50 shadow-sm">
-                <div className="mb-4 rounded-full bg-primary/10 p-4">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold">Team Collaboration</h3>
-                <p className="text-muted-foreground">
-                  Assign tasks, track progress, and work together seamlessly.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center p-6 bg-background rounded-xl border border-border/50 shadow-sm">
-                <div className="mb-4 rounded-full bg-primary/10 p-4">
-                  <CheckCircle2 className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold">Stay Organized</h3>
-                <p className="text-muted-foreground">
-                  Boards, lists, and cards keep your projects structured and clear.
-                </p>
+              <div>
+                <h3 className="text-foreground text-xl font-semibold">AI Meeting Scheduler</h3>
+                <p className="text-muted-foreground my-4 text-lg">Effortlessly book and manage your meetings. Stay on top of your schedule.</p>
+                <Card className="aspect-video overflow-hidden px-6 pt-6 bg-muted/50 border-none shadow-none">
+                  <div className="h-full w-full bg-background rounded-t-xl border border-border shadow-sm p-4 translate-y-2 flex flex-col items-center justify-center text-muted-foreground">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                      <Zap className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="text-sm font-medium">Auto-Scheduling...</div>
+                  </div>
+                </Card>
               </div>
             </div>
+
+            <blockquote className="before:bg-primary relative mt-12 max-w-xl pl-6 before:absolute before:inset-y-0 before:left-0 before:w-1 before:rounded-full">
+              <p className="text-foreground text-lg italic">"Wow, auto-generated pages are the kind of thing that you don't even know you need until you see it. It's like an AI-native CRM."</p>
+              <footer className="mt-4 flex items-center gap-2">
+                <cite className="not-italic font-medium">Méschac Irung</cite>
+                <span
+                  aria-hidden
+                  className="bg-foreground/15 h-1 w-1 rounded-full"></span>
+                <span className="text-muted-foreground">Creator</span>
+              </footer>
+            </blockquote>
           </div>
         </section>
       </main>
