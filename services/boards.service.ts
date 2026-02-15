@@ -239,11 +239,57 @@ export class BoardsService {
       .where(eq(boardMembers.boardId, boardId));
   }
   async findUserByEmail(email: string) {
-    const [user] = await db
-      .select({ id: users.id })
+    // 1. Try to find user in local DB first
+    const [localUser] = await db
+      .select({ id: users.id, email: users.email, name: users.name, avatarUrl: users.avatarUrl })
       .from(users)
       .where(eq(users.email, email))
       .limit(1);
-    return user;
+
+    if (localUser) {
+      return localUser;
+    }
+
+    // 2. Fallback: Try to find user in Clerk
+    try {
+      const { clerkClient } = await import('@clerk/nextjs/server');
+      const client = await clerkClient();
+
+      const clerkUsers = await client.users.getUserList({
+        emailAddress: [email],
+        limit: 1,
+      });
+
+      if (clerkUsers.data.length > 0) {
+        const clerkUser = clerkUsers.data[0];
+
+        // Sync user to local DB
+        const newUser = {
+          id: clerkUser.id,
+          email: clerkUser.emailAddresses[0]?.emailAddress || email,
+          name: `${clerkUser.firstName || ''} ${clerkUser.lastName || ''}`.trim() || null,
+          avatarUrl: clerkUser.imageUrl,
+        };
+
+        await db
+          .insert(users)
+          .values(newUser)
+          .onConflictDoUpdate({
+            target: users.id,
+            set: {
+              email: newUser.email,
+              name: newUser.name,
+              avatarUrl: newUser.avatarUrl,
+              updatedAt: new Date(),
+            },
+          });
+
+        return newUser;
+      }
+    } catch (error) {
+      console.error('Error finding user in Clerk:', error);
+    }
+
+    return null;
   }
 }
