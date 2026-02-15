@@ -128,12 +128,12 @@ export default function HeroSection() {
 
             <div className="border-foreground/10 relative mt-16 grid gap-12 border-b pb-12 [--radius:1rem] md:grid-cols-2">
               <div>
-                <h3 className="text-foreground text-xl font-semibold">Marketing Campaigns</h3>
-                <p className="text-muted-foreground my-4 text-lg">Effortlessly plan and execute your marketing campaigns organized.</p>
+                <h3 className="text-foreground text-xl font-semibold">Kanban Workflows</h3>
+                <p className="text-muted-foreground my-4 text-lg">Visualize your work with flexible Kanban boards. Drag and drop tasks to update status instantly.</p>
                 <Card className="aspect-video overflow-hidden px-6 pt-6 bg-muted/50 border-none shadow-none">
                   <div className="h-full w-full bg-background rounded-t-xl border border-border shadow-sm p-4 translate-y-2">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-8 h-8 rounded-full bg-primary/20"></div>
+                      <div className="w-8 h-8 rounded-full bg-blue-500/20"></div>
                       <div className="h-4 w-24 bg-muted rounded"></div>
                     </div>
                     <div className="space-y-2">
@@ -144,14 +144,14 @@ export default function HeroSection() {
                 </Card>
               </div>
               <div>
-                <h3 className="text-foreground text-xl font-semibold">AI Meeting Scheduler</h3>
-                <p className="text-muted-foreground my-4 text-lg">Effortlessly book and manage your meetings. Stay on top of your schedule.</p>
+                <h3 className="text-foreground text-xl font-semibold">Sprint Planning</h3>
+                <p className="text-muted-foreground my-4 text-lg">Plan efficient sprints and track velocity. Keep your team aligned and moving forward.</p>
                 <Card className="aspect-video overflow-hidden px-6 pt-6 bg-muted/50 border-none shadow-none">
                   <div className="h-full w-full bg-background rounded-t-xl border border-border shadow-sm p-4 translate-y-2 flex flex-col items-center justify-center text-muted-foreground">
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
                       <Zap className="h-6 w-6 text-primary" />
                     </div>
-                    <div className="text-sm font-medium">Auto-Scheduling...</div>
+                    <div className="text-sm font-medium">Sprint Goal Reached</div>
                   </div>
                 </Card>
               </div>

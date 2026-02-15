@@ -6,42 +6,42 @@ const THEO_AVATAR = 'https://avatars.githubusercontent.com/u/68236786?v=4'
 const GLODIE_AVATAR = 'https://avatars.githubusercontent.com/u/99137927?v=4'
 
 export const Table = ({ className }: { className?: string }) => {
-    const customers = [
+    const tasks = [
         {
-            id: 1,
-            date: '10/31/2023',
-            status: 'Paid',
+            id: "TASK-87",
+            date: 'May 12, 2026',
+            status: 'Done',
             statusVariant: 'success',
-            name: 'Bernard Ng',
+            assignee: 'Bernard Ng',
             avatar: BERNARD_AVATAR,
-            revenue: '$43.99',
+            priority: 'High',
         },
         {
-            id: 2,
-            date: '10/21/2023',
-            status: 'Ref',
+            id: "TASK-88",
+            date: 'May 15, 2026',
+            status: 'In Progress',
             statusVariant: 'warning',
-            name: 'Méschac Irung',
+            assignee: 'Méschac Irung',
             avatar: MESCHAC_AVATAR,
-            revenue: '$19.99',
+            priority: 'Medium',
         },
         {
-            id: 3,
-            date: '10/15/2023',
-            status: 'Paid',
+            id: "TASK-89",
+            date: 'May 22, 2026',
+            status: 'Done',
             statusVariant: 'success',
-            name: 'Glodie Ng',
+            assignee: 'Glodie Ng',
             avatar: GLODIE_AVATAR,
-            revenue: '$99.99',
+            priority: 'Low',
         },
         {
-            id: 4,
-            date: '10/12/2023',
-            status: 'Cancelled',
+            id: "TASK-90",
+            date: 'May 25, 2026',
+            status: 'To Do',
             statusVariant: 'danger',
-            name: 'Theo Ng',
+            assignee: 'Theo Ng',
             avatar: THEO_AVATAR,
-            revenue: '$19.99',
+            priority: 'High',
         },
     ]
 
@@ -53,48 +53,57 @@ export const Table = ({ className }: { className?: string }) => {
                     <div className="bg-muted h-3 w-3 rounded-full border border-border"></div>
                     <div className="bg-muted h-3 w-3 rounded-full border border-border"></div>
                 </div>
-                <div className="text-lg font-semibold">Customers</div>
-                <p className="text-sm text-muted-foreground">New users by First user primary channel group</p>
+                <div className="text-lg font-semibold">Active Tasks</div>
+                <p className="text-sm text-muted-foreground">Recent updates from your team's sprint board</p>
             </div>
             <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
                     <thead className="bg-muted/50 text-muted-foreground font-medium">
                         <tr>
-                            <th className="px-4 py-3 rounded-l-md">#</th>
-                            <th className="px-4 py-3">Date</th>
+                            <th className="px-4 py-3 rounded-l-md">Task ID</th>
+                            <th className="px-4 py-3">Due Date</th>
                             <th className="px-4 py-3">Status</th>
-                            <th className="px-4 py-3">Customer</th>
-                            <th className="px-4 py-3 rounded-r-md">Revenue</th>
+                            <th className="px-4 py-3">Assignee</th>
+                            <th className="px-4 py-3 rounded-r-md">Priority</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-border">
-                        {customers.map((customer) => (
-                            <tr key={customer.id}>
-                                <td className="px-4 py-3">{customer.id}</td>
-                                <td className="px-4 py-3">{customer.date}</td>
+                        {tasks.map((task) => (
+                            <tr key={task.id}>
+                                <td className="px-4 py-3 font-mono text-xs">{task.id}</td>
+                                <td className="px-4 py-3">{task.date}</td>
                                 <td className="px-4 py-3">
                                     <span className={cn(
                                         'inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium',
-                                        customer.statusVariant === 'success' && 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
-                                        customer.statusVariant === 'danger' && 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-                                        customer.statusVariant === 'warning' && 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
+                                        task.statusVariant === 'success' && 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+                                        task.statusVariant === 'danger' && 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-400',
+                                        task.statusVariant === 'warning' && 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
                                     )}>
-                                        {customer.status}
+                                        {task.status}
                                     </span>
                                 </td>
                                 <td className="px-4 py-3">
                                     <div className="flex items-center gap-2">
                                         <div className="h-6 w-6 overflow-hidden rounded-full bg-muted">
                                             <img
-                                                src={customer.avatar}
-                                                alt={customer.name}
+                                                src={task.avatar}
+                                                alt={task.assignee}
                                                 className="h-full w-full object-cover"
                                             />
                                         </div>
-                                        <span className="font-medium">{customer.name}</span>
+                                        <span className="font-medium">{task.assignee}</span>
                                     </div>
                                 </td>
-                                <td className="px-4 py-3">{customer.revenue}</td>
+                                <td className="px-4 py-3">
+                                    <span className={cn(
+                                        "font-medium",
+                                        task.priority === 'High' ? "text-red-500" :
+                                            task.priority === 'Medium' ? "text-yellow-500" :
+                                                "text-blue-500"
+                                    )}>
+                                        {task.priority}
+                                    </span>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
