@@ -60,41 +60,10 @@ export default function HeroSection() {
                     A powerful task management platform that helps teams collaborate, organize work, and track progress seamlessly.
                   </p>
 
-                  <div className="flex items-center gap-3">
-                    <Button
-                      asChild
-                      size="lg"
-                      className="pr-4.5 gap-1">
-                      <Link href="/sign-up">
-                        <span className="text-nowrap">Get Started</span>
-                        <ChevronRight className="h-4 w-4 opacity-50" />
-                      </Link>
-                    </Button>
-                    <Button
-                      key={2}
-                      asChild
-                      size="lg"
-                      variant="outline"
-                      className="pl-5 gap-2">
-                      <Link href="#demo">
-                        <CirclePlay className="h-4 w-4 fill-primary/10 stroke-primary" />
-                        <span className="text-nowrap">Watch demo</span>
-                      </Link>
-                    </Button>
-                  </div>
+
                 </div>
 
-                <div className="mt-10">
-                  <p className="text-muted-foreground text-sm font-medium">Trusted by teams at :</p>
-                  <div className="mt-4 flex gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
-                    <div className="flex items-center gap-2 font-bold text-lg">
-                      <div className="h-6 w-6 bg-foreground rounded-full"></div> Acme Inc.
-                    </div>
-                    <div className="flex items-center gap-2 font-bold text-lg">
-                      <div className="h-6 w-6 bg-foreground rounded-full"></div> Globex
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </div>
 
