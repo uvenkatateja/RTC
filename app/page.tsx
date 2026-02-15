@@ -157,16 +157,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <blockquote className="before:bg-primary relative mt-12 max-w-xl pl-6 before:absolute before:inset-y-0 before:left-0 before:w-1 before:rounded-full">
-              <p className="text-foreground text-lg italic">"This platform has transformed how our engineering team operates. The kanban workflows are intuitive and the real-time updates keep everyone perfectly aligned."</p>
-              <footer className="mt-4 flex items-center gap-2">
-                <cite className="not-italic font-medium">Alex Chen</cite>
-                <span
-                  aria-hidden
-                  className="bg-foreground/15 h-1 w-1 rounded-full"></span>
-                <span className="text-muted-foreground">Engineering Lead</span>
-              </footer>
-            </blockquote>
+
           </div>
         </section>
       </main>
