@@ -99,31 +99,14 @@ export default function HeroSection() {
             <div className="perspective-near mt-12 translate-x-12 md:absolute md:-right-6 md:bottom-auto md:top-20 md:left-1/2 md:mt-0 md:translate-x-0 w-full max-w-3xl">
               <div className="before:border-foreground/5 before:bg-foreground/5 relative h-full before:absolute before:-inset-x-4 before:bottom-7 before:top-0 before:skew-x-6 before:rounded-[calc(var(--radius)+1rem)] before:border transform md:scale-90 lg:scale-100 origin-top-left">
                 <div className="bg-background rounded-lg shadow-2xl shadow-foreground/10 ring-foreground/5 relative aspect-video -translate-y-6 skew-x-6 overflow-hidden border border-border/50 ring-1">
-                  <div className="w-full h-full bg-muted/20 flex flex-col">
-                    {/* Mock UI Header */}
-                    <div className="h-10 border-b border-border bg-background flex items-center px-4 gap-2">
-                      <div className="flex gap-1.5">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
-                      </div>
-                    </div>
-                    {/* Mock UI Content */}
-                    <div className="p-6 grid grid-cols-3 gap-4 h-full">
-                      <div className="bg-muted/50 rounded-md p-3 flex flex-col gap-3">
-                        <div className="h-4 w-20 bg-background rounded-sm mb-2"></div>
-                        <div className="h-20 bg-background rounded border border-border/50 shadow-sm"></div>
-                        <div className="h-20 bg-background rounded border border-border/50 shadow-sm"></div>
-                      </div>
-                      <div className="bg-muted/50 rounded-md p-3 flex flex-col gap-3">
-                        <div className="h-4 w-20 bg-background rounded-sm mb-2"></div>
-                        <div className="h-24 bg-background rounded border border-border/50 shadow-sm"></div>
-                      </div>
-                      <div className="bg-muted/50 rounded-md p-3 flex flex-col gap-3">
-                        <div className="h-4 w-20 bg-background rounded-sm mb-2"></div>
-                      </div>
-                    </div>
-                  </div>
+                  <Image
+                    src="/hero.png"
+                    alt="TaskFlow Dashboard"
+                    width={1200}
+                    height={800}
+                    className="object-cover w-full h-full rounded-lg"
+                    priority
+                  />
                 </div>
               </div>
             </div>
