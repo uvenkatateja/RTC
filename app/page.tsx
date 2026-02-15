@@ -120,7 +120,7 @@ export default function HeroSection() {
           <div className="mx-auto w-full max-w-5xl px-6">
             <div>
               <h2 className="text-foreground text-4xl font-semibold">Effortless Task Management</h2>
-              <p className="text-muted-foreground mb-12 mt-4 text-balance text-lg">Automate your tasks and workflows by connecting your favorite tools like Notion, Todoist, and more. AI-powered scheduling helps you stay on track and adapt to changing priorities.</p>
+              <p className="text-muted-foreground mb-12 mt-4 text-balance text-lg">Automate your tasks and workflows by connecting your favorite tools. Smart scheduling helps you stay on track and adapt to changing priorities seamlessly.</p>
               <div className="bg-foreground/5 rounded-3xl p-6 border border-border/50">
                 <Table />
               </div>
@@ -158,13 +158,13 @@ export default function HeroSection() {
             </div>
 
             <blockquote className="before:bg-primary relative mt-12 max-w-xl pl-6 before:absolute before:inset-y-0 before:left-0 before:w-1 before:rounded-full">
-              <p className="text-foreground text-lg italic">"Wow, auto-generated pages are the kind of thing that you don't even know you need until you see it. It's like an AI-native CRM."</p>
+              <p className="text-foreground text-lg italic">"This platform has transformed how our engineering team operates. The kanban workflows are intuitive and the real-time updates keep everyone perfectly aligned."</p>
               <footer className="mt-4 flex items-center gap-2">
-                <cite className="not-italic font-medium">Méschac Irung</cite>
+                <cite className="not-italic font-medium">Alex Chen</cite>
                 <span
                   aria-hidden
                   className="bg-foreground/15 h-1 w-1 rounded-full"></span>
-                <span className="text-muted-foreground">Creator</span>
+                <span className="text-muted-foreground">Engineering Lead</span>
               </footer>
             </blockquote>
           </div>
