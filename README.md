@@ -3,6 +3,9 @@
 
 A modern, full-stack task management application built with Next.js, Drizzle ORM, Clerk Authentication, and real-time capabilities via Ably. Designed to be a lightweight, high-performance alternative to Trello/Notion.
 
+> **[📄 View Project Deliverables & Architecture](./DELIVERABLES.md)**
+> Comprehensive documentation on frontend/backend architecture, efficient schema design, and API contracts.
+
 ## 🚀 Features
 
 -   **Authentication**: Secure signup/login via Clerk (Google, Email, etc.).
